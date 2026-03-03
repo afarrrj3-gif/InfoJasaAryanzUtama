@@ -5,192 +5,163 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AryanzUtama Services</title>
+<title>Chat Admin</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:system-ui;
-}
-
 body{
+margin:0;
+font-family:system-ui;
 background:#0b1220;
 color:white;
+display:flex;
+flex-direction:column;
+height:100vh;
 }
 
 /* HEADER */
 
-.banner{
+.header{
 
-width:100%;
-height:180px;
+display:flex;
+align-items:center;
 
-background:url("https://res.cloudinary.com/dtdodhqqi/image/upload/v1766772767/IMG-20251128-WA0091_ldbe9l.jpg") center/cover;
+padding:12px;
 
-}
+background:#121c34;
 
-/* PROFILE */
-
-.profile{
-
-text-align:center;
-margin-top:-60px;
+box-shadow:0 2px 10px rgba(0,0,0,0.3);
 
 }
 
-.profile img{
+.avatar{
 
-width:120px;
-height:120px;
+width:40px;
+height:40px;
 
 border-radius:50%;
 
-border:4px solid #0b1220;
-
-box-shadow:0 0 20px rgba(0,180,255,0.4);
+margin-right:10px;
 
 }
 
 .name{
 
-font-size:26px;
-
-margin-top:10px;
-
 font-weight:600;
 
 }
 
-.number{
+.status{
 
-opacity:0.7;
-
-margin-top:4px;
-
-}
-
-/* SERVICE */
-
-.container{
-
-padding:25px;
-
-max-width:800px;
-
-margin:auto;
-
-}
-
-.title{
-
-font-size:18px;
-
-margin-bottom:15px;
-
-opacity:0.8;
-
-}
-
-.grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:15px;
-
-}
-
-.card{
-
-background:#121c34;
-
-padding:18px;
-
-border-radius:14px;
-
-transition:0.25s;
-
-cursor:pointer;
-
-border:1px solid rgba(255,255,255,0.05);
-
-}
-
-.card:hover{
-
-transform:translateY(-4px);
-
-box-shadow:0 10px 30px rgba(0,150,255,0.2);
-
-}
-
-.card h3{
-
-font-size:16px;
-
-margin-bottom:5px;
-
-color:#6ec1ff;
-
-}
-
-.card p{
-
-font-size:13px;
-
+font-size:12px;
 opacity:0.7;
 
 }
 
-/* BUTTON */
+/* CHAT AREA */
 
-.button{
+.chat{
 
-display:block;
+flex:1;
 
-margin-top:12px;
+overflow-y:auto;
 
-background:#1da1ff;
+padding:15px;
 
-text-align:center;
+display:flex;
 
-padding:9px;
+flex-direction:column;
 
-border-radius:8px;
+gap:10px;
 
-text-decoration:none;
+}
 
-color:white;
+/* MESSAGE */
+
+.msg{
+
+max-width:75%;
+
+padding:10px 14px;
+
+border-radius:12px;
 
 font-size:14px;
 
-transition:0.2s;
+animation:fade 0.25s ease;
 
 }
 
-.button:hover{
+.user{
 
-background:#0e8fe6;
+background:#1da1ff;
+
+align-self:flex-end;
 
 }
 
-/* FOOTER */
+.admin{
 
-footer{
+background:#1c294a;
 
-text-align:center;
+align-self:flex-start;
 
-margin-top:40px;
+}
 
-padding-bottom:20px;
+@keyframes fade{
 
-font-size:12px;
+from{
+opacity:0;
+transform:translateY(10px);
+}
 
-opacity:0.5;
+}
+
+/* INPUT */
+
+.input-area{
+
+display:flex;
+
+padding:10px;
+
+background:#121c34;
+
+}
+
+input{
+
+flex:1;
+
+border:none;
+
+outline:none;
+
+padding:10px;
+
+border-radius:8px;
+
+background:#1c294a;
+
+color:white;
+
+}
+
+button{
+
+margin-left:8px;
+
+border:none;
+
+padding:10px 14px;
+
+border-radius:8px;
+
+background:#1da1ff;
+
+color:white;
+
+cursor:pointer;
 
 }
 
@@ -200,94 +171,88 @@ opacity:0.5;
 
 <body>
 
-<div class="banner"></div>
+<div class="header">
 
-<div class="profile">
+<img class="avatar"
+src="https://res.cloudinary.com/dtdodhqqi/image/upload/v1766845910/IMG-20251128-WA0094_1_rrrhdn.jpg">
 
-<img src="https://res.cloudinary.com/dtdodhqqi/image/upload/v1766845910/IMG-20251128-WA0094_1_rrrhdn.jpg">
+<div>
 
 <div class="name">AryanzUtama</div>
 
-<div class="number">0895-3296-60340</div>
-
-</div>
-
-<div class="container">
-
-<div class="title">Available Services</div>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>🔐 Amanin Akun ML</h3>
-
-<p>Pengamanan akun Mobile Legends</p>
-
-<a class="button" href="https://wa.me/62895329660340?text=Halo%20admin%20AryanzUtama,%20saya%20tertarik%20dengan%20jasa%20Amanin%20Akun%20ML">Order</a>
-
-</div>
-
-<div class="card">
-
-<h3>🔥 Amanin Akun FF</h3>
-
-<p>Pengamanan akun Free Fire</p>
-
-<a class="button" href="https://wa.me/62895329660340?text=Halo%20admin%20AryanzUtama,%20saya%20tertarik%20dengan%20jasa%20Amanin%20Akun%20FF">Order</a>
-
-</div>
-
-<div class="card">
-
-<h3>🔄 Rebind FF</h3>
-
-<p>Ganti bind akun Free Fire</p>
-
-<a class="button" href="https://wa.me/62895329660340?text=Halo%20admin%20AryanzUtama,%20saya%20tertarik%20dengan%20jasa%20Rebind%20FF">Order</a>
-
-</div>
-
-<div class="card">
-
-<h3>📢 Jasa Posting Akun</h3>
-
-<p>Promosi akun ke buyer</p>
-
-<a class="button" href="https://wa.me/62895329660340?text=Halo%20admin%20AryanzUtama,%20saya%20ingin%20posting%20akun">Order</a>
-
-</div>
-
-<div class="card">
-
-<h3>💎 Jual Akun ML</h3>
-
-<p>Berbagai rank dan skin</p>
-
-<a class="button" href="https://wa.me/62895329660340?text=Halo%20admin%20AryanzUtama,%20saya%20ingin%20melihat%20akun%20ML">Order</a>
-
-</div>
-
-<div class="card">
-
-<h3>⚡ Jual Akun FF</h3>
-
-<p>Akun sultan dan rare</p>
-
-<a class="button" href="https://wa.me/62895329660340?text=Halo%20admin%20AryanzUtama,%20saya%20ingin%20melihat%20akun%20FF">Order</a>
+<div class="status">online</div>
 
 </div>
 
 </div>
 
+<div id="chat" class="chat"></div>
+
+<div class="input-area">
+
+<input id="msg" placeholder="Ketik pesan...">
+
+<button onclick="send()">Kirim</button>
+
 </div>
 
-<footer>
+<script>
 
-PoweredByAryanzUtama
+const chat=document.getElementById("chat")
 
-</footer>
+function addUser(text){
+
+chat.innerHTML+=`<div class="msg user">${text}</div>`
+
+scroll()
+
+}
+
+function addAdmin(text){
+
+chat.innerHTML+=`<div class="msg admin">${text}</div>`
+
+scroll()
+
+}
+
+function scroll(){
+
+chat.scrollTop=chat.scrollHeight
+
+}
+
+function send(){
+
+const input=document.getElementById("msg")
+
+if(input.value.trim()=="")return
+
+addUser(input.value)
+
+autoReply(input.value)
+
+input.value=""
+
+}
+
+function autoReply(text){
+
+setTimeout(()=>{
+
+addAdmin("Halo kak 👋")
+
+},700)
+
+setTimeout(()=>{
+
+addAdmin("Admin AryanzUtama ready membantu.")
+
+},1400)
+
+}
+
+</script>
 
 </body>
-
-  </html>
+</html>
