@@ -1,198 +1,204 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Chat Admin</title>
+<title>Chat</title>
 
 <style>
 
-body{
+*{
+box-sizing:border-box;
 margin:0;
-font-family:system-ui;
-background:#0b1220;
-color:white;
+padding:0;
+font-family:system-ui, -apple-system, Arial;
+}
+
+body{
+height:100vh;
 display:flex;
 flex-direction:column;
-height:100vh;
+background:#0b141a;
+color:white;
 }
 
 /* HEADER */
 
 .header{
-
 display:flex;
 align-items:center;
+gap:12px;
+background:#0b141a;
+padding:10px 14px;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
 
-padding:12px;
-
-background:#121c34;
-
-box-shadow:0 2px 10px rgba(0,0,0,0.3);
-
+.back{
+font-size:22px;
+color:#7aa2ff;
+cursor:pointer;
 }
 
 .avatar{
-
 width:40px;
 height:40px;
-
 border-radius:50%;
+background:#e57373;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:600;
+}
 
-margin-right:10px;
-
+.title{
+display:flex;
+flex-direction:column;
 }
 
 .name{
-
+font-size:17px;
 font-weight:600;
-
 }
 
 .status{
-
 font-size:12px;
-opacity:0.7;
+opacity:0.6;
+}
 
+.menu{
+margin-left:auto;
+font-size:20px;
+opacity:0.8;
 }
 
 /* CHAT AREA */
 
 .chat{
-
 flex:1;
-
 overflow-y:auto;
-
-padding:15px;
-
+padding:14px;
 display:flex;
-
 flex-direction:column;
-
-gap:10px;
-
+gap:6px;
+background-image:url("https://res.cloudinary.com/dtdodhqqi/image/upload/v1771310542/c36725a5a2a254a5df8c7dd4bdaa05af_v3tzna.jpg");
+background-size:cover;
 }
 
-/* MESSAGE */
+/* DATE */
+
+.date{
+align-self:center;
+background:rgba(0,0,0,0.4);
+padding:5px 10px;
+border-radius:10px;
+font-size:12px;
+margin:8px 0;
+}
+
+/* BUBBLE */
 
 .msg{
-
 max-width:75%;
-
-padding:10px 14px;
-
-border-radius:12px;
-
+padding:8px 10px;
+border-radius:10px;
 font-size:14px;
-
-animation:fade 0.25s ease;
-
+display:flex;
+flex-direction:column;
 }
 
 .user{
-
-background:#1da1ff;
-
 align-self:flex-end;
-
+background:#1f6f5d;
+color:white;
 }
 
-.admin{
-
-background:#1c294a;
-
+.bot{
 align-self:flex-start;
-
+background:#202c33;
 }
 
-@keyframes fade{
-
-from{
-opacity:0;
-transform:translateY(10px);
+.time{
+font-size:11px;
+opacity:0.7;
+align-self:flex-end;
+margin-top:2px;
 }
 
-}
+/* INPUT BAR */
 
-/* INPUT */
-
-.input-area{
-
+.inputbar{
 display:flex;
-
-padding:10px;
-
-background:#121c34;
-
+align-items:center;
+gap:8px;
+background:#202c33;
+padding:8px 10px;
 }
 
-input{
+.smile{
+font-size:22px;
+opacity:0.8;
+}
 
+.input{
 flex:1;
-
+background:#2a3942;
 border:none;
-
 outline:none;
-
-padding:10px;
-
-border-radius:8px;
-
-background:#1c294a;
-
+padding:10px 12px;
+border-radius:20px;
 color:white;
-
+font-size:14px;
 }
 
-button{
+.attach{
+font-size:20px;
+opacity:0.8;
+}
 
-margin-left:8px;
-
-border:none;
-
-padding:10px 14px;
-
-border-radius:8px;
-
-background:#1da1ff;
-
-color:white;
-
-cursor:pointer;
-
+.mic{
+width:36px;
+height:36px;
+border-radius:50%;
+background:#2a7fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="header">
+<div class="back">←</div>
 
-<img class="avatar"
-src="https://res.cloudinary.com/dtdodhqqi/image/upload/v1766845910/IMG-20251128-WA0094_1_rrrhdn.jpg">
+<div class="avatar">A</div>
 
-<div>
+<div class="title">
+<div class="name">Aeyanz</div>
+<div class="status">bot</div>
+</div>
 
-<div class="name">AryanzUtama</div>
+<div class="menu">⋮</div>
+</div>
 
-<div class="status">online</div>
+<div id="chat" class="chat">
+
+<div class="date">February 19</div>
 
 </div>
 
-</div>
+<div class="inputbar">
 
-<div id="chat" class="chat"></div>
+<div class="smile">😊</div>
 
-<div class="input-area">
+<input id="text" class="input" placeholder="Message">
 
-<input id="msg" placeholder="Ketik pesan...">
+<div class="attach">📎</div>
 
-<button onclick="send()">Kirim</button>
+<div class="mic">🎤</div>
 
 </div>
 
@@ -200,57 +206,38 @@ src="https://res.cloudinary.com/dtdodhqqi/image/upload/v1766845910/IMG-20251128-
 
 const chat=document.getElementById("chat")
 
-function addUser(text){
-
-chat.innerHTML+=`<div class="msg user">${text}</div>`
-
-scroll()
-
-}
-
-function addAdmin(text){
-
-chat.innerHTML+=`<div class="msg admin">${text}</div>`
-
-scroll()
-
-}
-
-function scroll(){
-
-chat.scrollTop=chat.scrollHeight
-
+function time(){
+let d=new Date()
+let h=d.getHours().toString().padStart(2,"0")
+let m=d.getMinutes().toString().padStart(2,"0")
+return h+":"+m
 }
 
 function send(){
 
-const input=document.getElementById("msg")
+const input=document.getElementById("text")
 
-if(input.value.trim()=="")return
+if(!input.value.trim()) return
 
-addUser(input.value)
+const msg=document.createElement("div")
+msg.className="msg user"
 
-autoReply(input.value)
+msg.innerHTML=`
+${input.value}
+<div class="time">${time()} ✓✓</div>
+`
+
+chat.appendChild(msg)
+
+chat.scrollTop=chat.scrollHeight
 
 input.value=""
 
 }
 
-function autoReply(text){
-
-setTimeout(()=>{
-
-addAdmin("Halo kak 👋")
-
-},700)
-
-setTimeout(()=>{
-
-addAdmin("Admin AryanzUtama ready membantu.")
-
-},1400)
-
-}
+document.getElementById("text").addEventListener("keydown",e=>{
+if(e.key==="Enter") send()
+})
 
 </script>
 
